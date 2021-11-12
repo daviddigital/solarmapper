@@ -9,7 +9,7 @@
     </tr>
     <% @suppliers.each do |supplier| %>
     <tr>
-        <td> <%= supplier.display_name %> </td>
+        <td> <%= link_to supplier.display_name, supplier_path(supplier.id) %> </td>
         <td> <%= supplier.website %> </td>
     </tr>
     <% end %>
