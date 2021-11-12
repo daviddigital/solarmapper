@@ -1,16 +1,16 @@
 <h1>Suppliers</h1>
 
+<%= link_to "New Supplier", new_supplier_path %>
+
 <table>
     <tr>
         <th> Name </th>
         <th> Website </th>
-        <th> About </th>
     </tr>
     <% @suppliers.each do |supplier| %>
     <tr>
         <td> <%= supplier.display_name %> </td>
         <td> <%= supplier.website %> </td>
-        <td> <%= supplier.short_description %></td>
     </tr>
     <% end %>
 </table>
