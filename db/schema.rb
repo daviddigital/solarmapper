@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_002009) do
+ActiveRecord::Schema.define(version: 2021_11_13_031521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,8 +58,17 @@ ActiveRecord::Schema.define(version: 2021_11_13_002009) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "website"
     t.string "address"
+    t.bigint "system_type_id", null: false
+    t.index ["system_type_id"], name: "index_suppliers_on_system_type_id"
+  end
+
+  create_table "system_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "suppliers", "system_types"
 end

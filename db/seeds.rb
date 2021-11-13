@@ -6,8 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Supplier.destroy_all
+SystemType.destroy_all
 
-Supplier.create(display_name: "DW Solar", 
+solar_and_battery = SystemType.create!(name: "Solar and Battery")
+
+Supplier.create!(display_name: "DW Solar", 
+system_type: solar_and_battery,
 business_name: "DW Solar Pty Ltd", 
 business_num: "403 403 210 220", 
 accred_num: "304 403 304 405", 
@@ -20,3 +24,5 @@ short_description: "Serving Brisbane since 1986, we install solar and batteries 
 long_description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 website: "dwsolar.com")
 
+p "#{Supplier.count} suppliers created"
+p "#{SystemType.count} system types created"
