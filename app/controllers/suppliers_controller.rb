@@ -18,11 +18,18 @@ class SuppliersController < ApplicationController
   def create
     @supplier = Supplier.new(supplier_params)
     @supplier.save
-    redirect_to suppliers_path
+    redirect_to @supplier
   end
 
   def destroy
+    @supplier.destroy
+    redirect_to suppliers_path
   end
+
+  def update
+    @supplier.update(supplier_params)
+    redirect_to @supplier
+  end 
 
   private
 

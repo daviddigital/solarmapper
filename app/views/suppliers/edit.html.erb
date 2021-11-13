@@ -1,2 +1,52 @@
-<h1>Suppliers#edit</h1>
-<p>Find me in app/views/suppliers/edit.html.erb</p>
+<h1>Edit <%= @supplier.display_name %></h1>
+
+<%= form_with model: @supplier do |f| %>
+<p>
+<%= f.label :display_name %>
+<%= f.text_field :display_name %>
+</p>
+<p>
+<%= f.label :address %>
+<%= f.text_field :address %>
+</p>
+<p>
+<%= f.label :business_name %>
+<%= f.text_field :business_name %>
+</p>
+<p>
+<%= f.label :business_num %>
+<%= f.text_field :business_num %>
+</p>
+<p>
+<%= f.label :website %>
+<%= f.url_field :website %>
+</p>
+<p>
+<%= f.label :accred_num %>
+<%= f.text_field :accred_num %>
+</p>
+<p>
+<%= f.label :phone %>
+<%= f.text_field :phone %>
+</p>
+<p>
+<%= f.label :display_email %>
+<%= f.email_field :display_email %>
+</p>
+<p>
+<%= f.label :quote_email %>
+<%= f.email_field :quote_email %>
+</p>
+<p>
+<%= f.label :short_description  %>
+<%= f.text_area :short_description, size: "35x5" %>
+</p>
+<p>
+<%= f.label :long_description %>
+<%= f.text_area :long_description, size: "70x5" %>
+</p>
+<p>
+<%= f.submit %>
+</p>
+
+<% end %> 
