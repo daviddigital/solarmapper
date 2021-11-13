@@ -36,7 +36,7 @@ class SuppliersController < ApplicationController
   ## Todo add relations 
   def supplier_params
     params.require(:supplier).permit(:display_name, :business_name, :business_num, :accred_num, :phone, :display_email, :quote_email, :instant_price, 
-    :short_description, :long_description, :short_description, :website, :address)
+    :short_description, :long_description, :short_description, :website, :address, :cover)
   end 
 
   def set_supplier

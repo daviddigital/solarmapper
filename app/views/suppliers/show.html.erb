@@ -1,4 +1,7 @@
 <h1> <%= @supplier.display_name %> </h1>
+<% if @supplier.cover.attached? %>
+    <%= cl_image_tag @supplier.cover.key, crop: :scale, width: 100, cloud_name: 'testtestetsettetest123123123123' if @supplier.cover.attached? %>
+<% end %>
 <p>
 <%= link_to "Edit",  edit_supplier_path %> 
 </p>
