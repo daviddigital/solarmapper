@@ -7,14 +7,7 @@ class SuppliersController < ApplicationController
     if params[:postcode]
       # @suppliers = Supplier.post_code_range.post_code_in(params[:postcode])
       # doesnt work
-      ## I am trying to do:
-      ## x = list of suppliers 
-      ## Supplier.each do |supplier|
-      ##    supplier.post_code_range.each do |range|
-      ##      if post_code_in(params[:postcode])
-      ##          x << supplier  
-      ## @suppliers = x 
-      
+      @suppliers = Supplier.order(instant_price: :asc)
     else 
       @suppliers = Supplier.order(instant_price: :asc)
     end
