@@ -5,4 +5,13 @@ class PostCodeRange < ApplicationRecord
     def postcode_from_to
         return "#{postcode_from.floor} - #{postcode_to.floor}"
     end
+
+    def postcode_in(postcode)
+    hash = {}
+        if postcode >= postcode_from && postcode <= postcode_to
+            hash[:zone] = zone
+            hash[:rating] = rating
+            p hash
+        end
+    end
 end

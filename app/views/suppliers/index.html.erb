@@ -6,13 +6,13 @@
     <tr>
         <th> Name </th>
         <th> System Types </th>
-        <th> Batteries from </th>
+        <th> Postcodes Served </th>
     </tr>
     <% @suppliers.each do |supplier| %>
     <tr>
         <td> <%= link_to supplier.display_name, supplier_path(supplier.id) %> </td>
         <td> <%= supplier.system_type.name %> </td>
-        <td> <%=  %> </td>
+        <td> <%= supplier.post_code_ranges.map { |p| p.postcode_from_to }.join(", ") %> </td>
 
     </tr>
     <% end %>

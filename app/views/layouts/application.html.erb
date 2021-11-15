@@ -11,6 +11,18 @@
   </head>
 
   <body>
+    <%= form_with url: "/suppliers", method: :get do |form| %>
+      <%= form.label :postcode %>
+      <%= form.text_field :postcode %>
+      <%= form.submit :search %>
+    <% end %>
+    <% if flash[:errors] %>
+      <section id="errors">
+        <% flash[:errors].each do |error| %>
+            <p><%= error %> <p>
+        <% end %>
+      </section>
+    <% end %>
     <%= yield %>
   </body>
 </html>

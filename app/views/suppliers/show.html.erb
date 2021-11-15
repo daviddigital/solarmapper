@@ -5,11 +5,9 @@
 <h5 >Battery Options: <%= @supplier.batteries.map { |b| b.name }.join(", ") %> </h5>
 <h5 >Solar System Options: <%= @supplier.solars.map { |s| s.name }.join(", ") %> </h5>
 <h5 >Postcodes served: <%= @supplier.post_code_ranges.map { |p| p.postcode_from_to }.join(", ") %> </h5>
-
 <p>
 <%= link_to "Go back", suppliers_path %>
 </p>
-
 <p>
 <%= link_to "Edit",  edit_supplier_path %> 
 </p>
