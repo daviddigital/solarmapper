@@ -1,7 +1,7 @@
 class SuppliersController < ApplicationController
   before_action :set_supplier, only: [:edit, :update, :show, :destroy]
   before_action :set_system_types, only: [:new, :edit, :create]
-  before_action :set_batteries_and_solars, only: [:new, :edit, :create]
+  before_action :set_batteries_and_solars_and_post_code_ranges, only: [:new, :edit, :create]
 
   # Filter suppliers by instant price available first
   def index
@@ -39,12 +39,13 @@ class SuppliersController < ApplicationController
   ## Todo add relations 
   def supplier_params
     params.require(:supplier).permit(:display_name, :business_name, :business_num, :accred_num, :phone, :display_email, :quote_email, :instant_price, 
-    :short_description, :long_description, :short_description, :website, :address, :cover, :system_type_id, solar_ids: [], battery_ids: [])
+    :short_description, :long_description, :short_description, :website, :address, :cover, :system_type_id, solar_ids: [], battery_ids: [], post_code_range_ids: [])
   end 
 
-  def set_batteries_and_solars
+  def set_batteries_and_solars_and_post_code_ranges
     @batteries = Battery.order(name: :asc)
     @solars = Solar.order(name: :asc)
+    @post_code_ranges = PostCodeRange.order(postcode_from: :asc)
   end
 
   def set_system_types

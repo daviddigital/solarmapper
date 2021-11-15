@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_100704) do
+ActiveRecord::Schema.define(version: 2021_11_15_120147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,24 @@ ActiveRecord::Schema.define(version: 2021_11_15_100704) do
     t.index ["supplier_id"], name: "index_battery_suppliers_on_supplier_id"
   end
 
+  create_table "post_code_range_suppliers", force: :cascade do |t|
+    t.bigint "post_code_range_id", null: false
+    t.bigint "supplier_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_code_range_id"], name: "index_post_code_range_suppliers_on_post_code_range_id"
+    t.index ["supplier_id"], name: "index_post_code_range_suppliers_on_supplier_id"
+  end
+
+  create_table "post_code_ranges", force: :cascade do |t|
+    t.decimal "postcode_from"
+    t.decimal "postcode_to"
+    t.integer "zone"
+    t.float "rating"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "solar_suppliers", force: :cascade do |t|
     t.bigint "solar_id", null: false
     t.bigint "supplier_id", null: false
@@ -110,6 +128,8 @@ ActiveRecord::Schema.define(version: 2021_11_15_100704) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "battery_suppliers", "batteries"
   add_foreign_key "battery_suppliers", "suppliers"
+  add_foreign_key "post_code_range_suppliers", "post_code_ranges"
+  add_foreign_key "post_code_range_suppliers", "suppliers"
   add_foreign_key "solar_suppliers", "solars"
   add_foreign_key "solar_suppliers", "suppliers"
   add_foreign_key "suppliers", "system_types"

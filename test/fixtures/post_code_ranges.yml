@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  postcode_from: 
+  postcode_to: 
+  zone: 1
+  rating: 1.5
+
+two:
+  postcode_from: 
+  postcode_to: 
+  zone: 1
+  rating: 1.5

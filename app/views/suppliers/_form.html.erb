@@ -36,6 +36,10 @@
 <%= f.collection_check_boxes :solar_ids, @solars, :id, :name %>
 </p>
 <p>
+<%= f.label :post_code_range_id %>
+<%= f.collection_check_boxes :post_code_range_ids, @post_code_ranges, :id, :postcode_from_to %>
+</p>
+<p>
 <%= f.label :accred_num %>
 <%= f.text_field :accred_num %>
 </p>
