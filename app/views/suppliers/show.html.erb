@@ -2,9 +2,17 @@
 <% if @supplier.cover.attached? %>
     <%= cl_image_tag @supplier.cover.key, crop: :scale, width: 100, cloud_name: 'testtestetsettetest123123123123' if @supplier.cover.attached? %>
 <% end %>
+<h5 >Battery Options: <%= @supplier.batteries.map { |b| b.name }.join(", ") %> </h5>
+<h5 >Solar System Options: <%= @supplier.solars.map { |s| s.name }.join(", ") %> </h5>
+<p>
+<%= link_to "Go back", suppliers_path %>
+</p>
+
 <p>
 <%= link_to "Edit",  edit_supplier_path %> 
 </p>
 <p>
 <%= link_to "Delete",  supplier_path, method: :delete, data: { confirm: "Are you sure you want to delete this supplier?"} %>
 </p>
+
+

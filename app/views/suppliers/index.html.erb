@@ -5,12 +5,15 @@
 <table>
     <tr>
         <th> Name </th>
-        <th> Website </th>
+        <th> System Types </th>
+        <th> Batteries from </th>
     </tr>
     <% @suppliers.each do |supplier| %>
     <tr>
         <td> <%= link_to supplier.display_name, supplier_path(supplier.id) %> </td>
-        <td> <%= supplier.website %> </td>
+        <td> <%= supplier.system_type.name %> </td>
+        <td> <%=  %> </td>
+
     </tr>
     <% end %>
 </table>

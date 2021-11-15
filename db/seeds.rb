@@ -5,12 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+BatterySupplier.destroy_all
 Supplier.destroy_all
 SystemType.destroy_all
+Battery.destroy_all
+Solar.destroy_all
 
 solar_and_battery = SystemType.create!(name: "Solar and Battery")
 
-Supplier.create!(display_name: "DW Solar", 
+x = Supplier.create!(display_name: "DW Solar", 
 system_type: solar_and_battery,
 business_name: "DW Solar Pty Ltd", 
 business_num: "403 403 210 220", 
@@ -24,5 +27,19 @@ short_description: "Serving Brisbane since 1986, we install solar and batteries 
 long_description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 website: "dwsolar.com")
 
+x.batteries.create(size: "13.5 kWh", name: "Powerwall 1", price: "1000000
+", available: true, description: "Powerwall 1 by Tesla.")
+x.batteries.create(size: "13.5 kWh", name: "Powerwall 2", price: "1500000
+", available: true, description: "Powerwall 1 by Tesla.")
+
+x.solars.create(size: "10 kW", name: "10 kW value system", price: "100000
+", available: true, description: "Sungrow 10kW inverter and 25 x 330 kW Jinko solar pv panels.")
+x.solars.create(size: "10 kW", name: "15 kW value system", price: "150000
+", available: true, description: "Sungrow 10kW inverter and 35 x 330 kW Jinko solar pv panels.")
+
 p "#{Supplier.count} suppliers created"
 p "#{SystemType.count} system types created"
+p "#{Battery.count} batteries created"
+p "#{BatterySupplier.count} battery_supliers created"
+p "#{Solar.count} solar systems created"
+p "#{SolarSupplier.count} solar_suppliers created"

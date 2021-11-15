@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_031521) do
+ActiveRecord::Schema.define(version: 2021_11_15_100704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,44 @@ ActiveRecord::Schema.define(version: 2021_11_13_031521) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "batteries", force: :cascade do |t|
+    t.string "size"
+    t.string "name"
+    t.decimal "price"
+    t.text "description"
+    t.boolean "available"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "battery_suppliers", force: :cascade do |t|
+    t.bigint "battery_id", null: false
+    t.bigint "supplier_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["battery_id"], name: "index_battery_suppliers_on_battery_id"
+    t.index ["supplier_id"], name: "index_battery_suppliers_on_supplier_id"
+  end
+
+  create_table "solar_suppliers", force: :cascade do |t|
+    t.bigint "solar_id", null: false
+    t.bigint "supplier_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["solar_id"], name: "index_solar_suppliers_on_solar_id"
+    t.index ["supplier_id"], name: "index_solar_suppliers_on_supplier_id"
+  end
+
+  create_table "solars", force: :cascade do |t|
+    t.string "name"
+    t.string "size"
+    t.text "description"
+    t.decimal "price"
+    t.boolean "available"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.string "display_name"
     t.string "business_name"
@@ -70,5 +108,9 @@ ActiveRecord::Schema.define(version: 2021_11_13_031521) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "battery_suppliers", "batteries"
+  add_foreign_key "battery_suppliers", "suppliers"
+  add_foreign_key "solar_suppliers", "solars"
+  add_foreign_key "solar_suppliers", "suppliers"
   add_foreign_key "suppliers", "system_types"
 end
