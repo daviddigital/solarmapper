@@ -5,20 +5,25 @@ class SuppliersController < ApplicationController
   before_action :set_batteries_and_solars_and_post_code_ranges, only: [:index, :new, :edit, :create]
 
   def index
-    if params[:postcode]
-      postcode = params[:postcode]
-      begin 
-        ranges = PostCodeRange.where("? >= postcode_from AND ? <= postcode_to", postcode, postcode)
-        @suppliers = ranges[0].suppliers.order(instant_price: :asc) 
-      rescue
-        # TODO Throw error if cant find postcode
-        # flash.now[:error] = @post_code_ranges.errors.full_messages
+    if user_signed_in?
+      @suppliers = Supplier.with_role(:admin, current_user)
+    else
+      if params[:postcode]
+        postcode = params[:postcode]
+        begin 
+          ranges = PostCodeRange.where("? >= postcode_from AND ? <= postcode_to", postcode, postcode)
+          @suppliers = ranges[0].suppliers.order(instant_price: :asc) 
+        rescue
+          # TODO Throw error if cant find postcode
+          # flash.now[:error] = @post_code_ranges.errors.full_messages
+          @suppliers = Supplier.order(instant_price: :asc)
+          render 'index'
+        end
+      else 
         @suppliers = Supplier.order(instant_price: :asc)
-        render 'index'
       end
-    else 
-      @suppliers = Supplier.order(instant_price: :asc)
     end
+    
   end
 
   def new
@@ -35,6 +40,7 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.new(supplier_params)
     begin
       @supplier.save!
+      current_user.add_role :admin, @supplier
       redirect_to @supplier
     rescue
       flash.now[:errors] = @supplier.errors.full_messages

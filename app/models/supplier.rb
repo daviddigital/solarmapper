@@ -1,4 +1,5 @@
 class Supplier < ApplicationRecord
+    resourcify
     has_one_attached :cover
     belongs_to :system_type
     has_many :battery_suppliers, dependent: :destroy
