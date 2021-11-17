@@ -1,13 +1,21 @@
 class SuppliersController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_supplier, only: [:edit, :update, :show, :destroy]
   before_action :set_system_types, only: [:new, :edit, :create]
   before_action :set_batteries_and_solars_and_post_code_ranges, only: [:index, :new, :edit, :create]
 
   def index
     if params[:postcode]
-      # @suppliers = Supplier.post_code_range.post_code_in(params[:postcode])
-      # doesnt work
-      @suppliers = Supplier.order(instant_price: :asc)
+      postcode = params[:postcode]
+      begin 
+        ranges = PostCodeRange.where("? >= postcode_from AND ? <= postcode_to", postcode, postcode)
+        @suppliers = ranges[0].suppliers.order(instant_price: :asc) 
+      rescue
+        # TODO Throw error if cant find postcode
+        # flash.now[:error] = @post_code_ranges.errors.full_messages
+        @suppliers = Supplier.order(instant_price: :asc)
+        render 'index'
+      end
     else 
       @suppliers = Supplier.order(instant_price: :asc)
     end

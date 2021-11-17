@@ -8,11 +8,13 @@
 <p>
 <%= link_to "Go back", suppliers_path %>
 </p>
+<% if user_signed_in? %>
 <p>
 <%= link_to "Edit",  edit_supplier_path %> 
 </p>
 <p>
 <%= link_to "Delete",  supplier_path, method: :delete, data: { confirm: "Are you sure you want to delete this supplier?"} %>
 </p>
+<% end %>
 
 

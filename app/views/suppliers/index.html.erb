@@ -1,7 +1,14 @@
 <h1>Suppliers</h1>
 
-<%= link_to "New Supplier", new_supplier_path %>
+<%= form_with url: "/suppliers", method: :get do |form| %>
+      <%= form.label :postcode %>
+      <%= form.text_field :postcode %>
+      <%= form.submit :search %>
+    <% end %>
 
+<% if user_signed_in? %>
+<%= link_to "New Supplier", new_supplier_path %>
+<% end %> 
 <table>
     <tr>
         <th> Name </th>
