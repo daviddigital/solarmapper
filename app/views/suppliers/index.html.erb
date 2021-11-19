@@ -1,14 +1,11 @@
+<div class = "container">
 <% if user_signed_in? %>
 <h1>My Supplier List</h1>
 <% else %>
 <h1>Solar and Battery Companies</h1>
 <% end %> 
 
-<%= form_with url: "/suppliers", method: :get do |form| %>
-      <%= form.label :postcode %>
-      <%= form.text_field :postcode %>
-      <%= form.submit :search %>
-    <% end %>
+
 
 <% if user_signed_in? %>
 <%= link_to "List New Battery/Solar Business", new_supplier_path %>
@@ -28,3 +25,4 @@
     </tr>
     <% end %>
 </table>
+</div>

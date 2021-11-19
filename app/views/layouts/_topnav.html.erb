@@ -1,17 +1,37 @@
+
+
 <header class="p-3 bg-dark text-white">
     <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">          
-                <li > <%= link_to 'Home', suppliers_path, class: "nav-link px-2 text-white" %> </li>
-                <% if user_signed_in? %>
-                    <li class="nav-link px-2 text-white"> <%= current_user.email %> </li>
-                    <li class="nav-link px-2 text-white"> <%= link_to 'Logout',  destroy_user_session_path, method: :delete %> </li>
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+         <% if user_signed_in? %>
+                    <li ><%= link_to 'SolarMapper BETA', suppliers_path, class: "fs-4" %> </li>
                 <% else %>
-                    <li> <%= link_to 'Supplier Login',  new_user_session_path, class: "nav-link px-2 text-white" %> </li>
-                    <li> <%= link_to 'Supplier Sign Up', new_user_registration_path, class: "nav-link px-2 text-white" %> </li>
+                    <li > <%= link_to 'SolarMapper BETA', root_path, class: "nav-link px-2 text-white" %> </li>
                 <% end %> 
-            </ul>
+        </ul>
+        <div class="text-end">
+            <% if user_signed_in? %>
+                <%= link_to destroy_user_session_path, method: :delete do%>
+                    <button type="button" class="btn btn-outline-light me-2">Log Out</button>
+                <%end%>
+
+                <%= link_to new_supplier_path do%>
+                    <button type="button" class="btn btn-warning">Add A Listing</button>
+                <%end%>
+            <% else %>
+                <%= link_to new_user_session_path do%>
+                    <button type="button" class="btn btn-outline-light me-2">Supplier Login</button>
+                <%end%>
+                <%= link_to new_user_registration_path do%>
+                    <button type="button" class="btn btn-warning">Add A Listing</button>
+                <%end%>
+            <% end %> 
         </div>
+      </div>
     </div>
-</header>
-</div>
+  </header>

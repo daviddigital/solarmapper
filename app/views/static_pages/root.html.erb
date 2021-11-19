@@ -1,0 +1,22 @@
+
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6">
+        <%= image_tag 'solar_hero.jpg', class: "d-block mx-lg-auto img-fluid", loading: "lazy" %>
+      </div>
+      <div class="col-lg-6">
+        <h1 class="display-5 fw-bold lh-1 mb-3">Find Solar and Battery Installers In Your Area </h1>
+        <p class="lead">Get instant online prices after rebates. </p>
+        
+            <%= form_with url: "/suppliers", method: :get do |form| %>
+            <div class="input-group mb-3">
+                <%= form.text_field :postcode, class: "form-control", placeholder: "Postcode", id:"button-addon2"%>
+                <%= form.button "Search", type: :submit, class: "btn btn-warning", id:"button-addon2"%>
+            <% end %>
+        </div>
+</div>
+        
+      </div>
+    </div>
+  </div>
