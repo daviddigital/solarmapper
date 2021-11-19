@@ -1,10 +1,17 @@
-<section id="topnav">
-<% if user_signed_in? %>
-    <%= current_user.email %>
-    |
-    <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
-<% else %>
-    <%= link_to 'Supplier Login',  new_user_session_path %>
-    |
-    <%= link_to 'Supplier Sign Up', new_user_registration_path  %>
-<% end %> 
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">          
+                <li > <%= link_to 'Home', suppliers_path, class: "nav-link px-2 text-white" %> </li>
+                <% if user_signed_in? %>
+                    <li class="nav-link px-2 text-white"> <%= current_user.email %> </li>
+                    <li class="nav-link px-2 text-white"> <%= link_to 'Logout',  destroy_user_session_path, method: :delete %> </li>
+                <% else %>
+                    <li> <%= link_to 'Supplier Login',  new_user_session_path, class: "nav-link px-2 text-white" %> </li>
+                    <li> <%= link_to 'Supplier Sign Up', new_user_registration_path, class: "nav-link px-2 text-white" %> </li>
+                <% end %> 
+            </ul>
+        </div>
+    </div>
+</header>
+</div>
