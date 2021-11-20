@@ -2,7 +2,16 @@
 <% if user_signed_in? %>
 <h1>My Supplier List</h1>
 <% else %>
-<h1>Solar and Battery Companies</h1>
+    <% if params[:postcode] && @suppliers.count > 0 %>
+        <h1> Solar and Battery Companies in <%= params[:postcode]%></h1>
+    <% else %>
+         <%= form_with url: "/suppliers", method: :get do |form| %>
+            <div class="input-group mb-3">
+                <%= form.text_field :postcode, class: "form-control", placeholder: "Postcode", id:"button-addon2"%>
+                <%= form.button "Search", type: :submit, class: "btn btn-warning", id:"button-addon2"%>
+            </div>
+            <% end %>
+    <% end %>
 <% end %> 
 
 
