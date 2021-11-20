@@ -28,6 +28,9 @@ short_description: "Serving Brisbane since 1986, we install solar and batteries 
 long_description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 website: "dwsolar.com")
 
+supplier.cover.attach(io: File.open(Rails.root.join('app/assets/images/company.jpg')),
+filename: 'solar.jpg')
+
 supplier.batteries.create(size: "13.5 kWh", name: "Powerwall 1", price: "1000000
 ", available: true, description: "Powerwall 1 by Tesla.")
 supplier.batteries.create(size: "13.5 kWh", name: "Powerwall 2", price: "1500000
@@ -58,6 +61,9 @@ instant_price: true,
 short_description: "Serving Brisbane since 1986, we install solar and batteries in QLD.",
 long_description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 website: "dwsolar.com")
+
+supplier_two.cover.attach(io: File.open(Rails.root.join('app/assets/images/company.jpg')),
+filename: 'solar.jpg')
 
 supplier_two.batteries.create(size: "13.5 kWh", name: "Powerwall 1", price: "1000000
 ", available: true, description: "Powerwall 1 by Tesla.")

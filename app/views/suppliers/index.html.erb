@@ -10,19 +10,24 @@
 <% if user_signed_in? %>
 <%= link_to "List New Battery/Solar Business", new_supplier_path %>
 <% end %> 
-<table>
-    <tr>
-        <th> Name </th>
-        <th> System Types </th>
-        <th> Postcodes Served </th>
-    </tr>
-    <% @suppliers.each do |supplier| %>
-    <tr>
-        <td> <%= link_to supplier.display_name, supplier_path(supplier.id) %> </td>
-        <td> <%= supplier.system_type.name %> </td>
-        <td> <%= supplier.post_code_ranges.map { |p| p.postcode_from_to }.join(", ") %> </td>
 
-    </tr>
-    <% end %>
-</table>
+<div>
+<% @suppliers.each do |supplier| %>
+<div class="card mb-3" style="max-width: 100%;">
+  <div class="row g-0">
+    <div class="col-md-4">
+        <% if supplier.cover.attached? %>
+            <%= cl_image_tag supplier.cover.key, crop: :scale, class: "img-fluid rounded-start", cloud_name: 'testtestetsettetest123123123123' if supplier.cover.attached? %>
+        <% end %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= supplier.display_name %></h5>
+        <p class="card-text"><%= supplier.short_description %></p>
+        <p> <%= link_to supplier.display_name, supplier_path(supplier.id) %></p>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %> 
 </div>

@@ -9,9 +9,9 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
          <% if user_signed_in? %>
-                    <li ><%= link_to 'SolarMapper BETA', suppliers_path, class: "fs-4" %> </li>
+                    <li ><%= link_to 'SolarMapper', suppliers_path, class: "nav-link px-2 text-white" %> </li>
                 <% else %>
-                    <li > <%= link_to 'SolarMapper BETA', root_path, class: "nav-link px-2 text-white" %> </li>
+                    <li > <%= link_to 'SolarMapper', root_path, class: "nav-link px-2 text-white" %> </li>
                 <% end %> 
         </ul>
         <div class="text-end">
