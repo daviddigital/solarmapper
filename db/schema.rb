@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_17_071506) do
+ActiveRecord::Schema.define(version: 2021_11_26_011556) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,11 +44,8 @@ ActiveRecord::Schema.define(version: 2021_11_17_071506) do
   end
 
   create_table "batteries", force: :cascade do |t|
-    t.string "size"
     t.string "name"
-    t.decimal "price"
     t.text "description"
-    t.boolean "available"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -101,10 +98,7 @@ ActiveRecord::Schema.define(version: 2021_11_17_071506) do
 
   create_table "solars", force: :cascade do |t|
     t.string "name"
-    t.string "size"
     t.text "description"
-    t.decimal "price"
-    t.boolean "available"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -125,6 +119,10 @@ ActiveRecord::Schema.define(version: 2021_11_17_071506) do
     t.string "website"
     t.string "address"
     t.bigint "system_type_id", null: false
+    t.decimal "price_solar"
+    t.text "solar_offer"
+    t.decimal "price_battery"
+    t.text "battery_offer"
     t.index ["system_type_id"], name: "index_suppliers_on_system_type_id"
   end
 

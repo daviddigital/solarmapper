@@ -13,9 +13,4 @@ class Supplier < ApplicationRecord
 
     validates :display_name, :business_name, presence: true    
 
-    # need to do something like the below, but for all of the postcode ranges served (postcode_from is based on supplier.post_code_range.postcode_from)
-    # scope :postcode_match,  -> (postcode) { where("postcode_from < ? AND postcode_to > ?", postcode, postcode) }
-
-    # scope :solar_and_battery -> where(system_type.name: "Solar and Battery")
-
 end

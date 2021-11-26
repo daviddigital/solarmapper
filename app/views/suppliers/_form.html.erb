@@ -40,7 +40,23 @@
 <%= f.collection_check_boxes :post_code_range_ids, @post_code_ranges, :id, :postcode_from_to %>
 </p>
 <p>
-<%= f.label :accred_num %>
+<%= f.label :price_solar, "The price for a 10kW system, before rebates (shown in listing table)" %>
+<%= f.text_field :price_solar %>
+</p>
+<p>
+<%= f.label :solar_offer, "The description of the 10kW solar system offer (shown in listing table)" %>
+<%= f.text_area :solar_offer %>
+</p>
+<p>
+<%= f.label :price_battery, "The price for a 10kW system, with a battery included, before rebates (shown in listing table)" %>
+<%= f.text_field :price_battery %>
+</p>
+<p>
+<%= f.label :battery_offer, "The description of the 10kW solar system offer with battery (shown in listing table)" %>
+<%= f.text_area :battery_offer %>
+</p>
+<p>
+<%= f.label :accred_num, "Clean Energy Council Accreditation Number (if accredited)" %>
 <%= f.text_field :accred_num %>
 </p>
 <p>
