@@ -11,6 +11,7 @@
       <div class="card-body">
         <h4 class="card-title"><%= @supplier.display_name %></h4>
         <p class="card-text"><%= @supplier.short_description %></p>
+        <p class="card-text">Address: <%= @supplier.address %></p>
         <p class="card-text"><%= link_to @supplier.website, "https://#{@supplier.website}" %></p>
         <h5 class="card-title">Battery Options</h5>
         <p class="card-text"><%= @supplier.batteries.map { |b| b.name }.join(", ") %></p>

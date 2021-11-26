@@ -22,6 +22,6 @@ class PostCodeRange < ApplicationRecord
     
     def rebate(size, rating)
         stc_price = 40
-        return size * rating * (2031-Date.today.year) * stc_price
+        return size * rating.to_f * (2031-Date.today.year) * stc_price
     end
 end

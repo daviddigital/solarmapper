@@ -14,13 +14,13 @@ class SuppliersController < ApplicationController
           ranges = PostCodeRange.where("? >= postcode_from AND ? <= postcode_to", postcode, postcode)
           @suppliers = ranges[0].suppliers.order(instant_price: :asc) 
         rescue
-          # TODO Throw error if cant find postcode
-          # flash.now[:error] = @post_code_ranges.errors.full_messages
-          @suppliers = Supplier.order(instant_price: :asc)
-          render 'index'
+          flash[:errors] = ["Postcode not found, please try again"]
+          redirect_to root_path
+
         end
       else 
-        @suppliers = Supplier.order(instant_price: :asc)
+        flash[:errors] = ["Postcode not found, please try again"]
+        redirect_to root_path
       end
     end
     

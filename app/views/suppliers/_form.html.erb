@@ -4,12 +4,12 @@
 <%= f.text_field :display_name %>
 </p>
 <p>
-<%= f.label :address %>
-<%= f.text_field :address %>
-</p>
-<p>
 <%= f.label :business_name %>
 <%= f.text_field :business_name %>
+</p>
+<p>
+<%= f.label :address %>
+<%= f.text_field :address %>
 </p>
 <p>
 <%= f.label :cover %>
@@ -24,19 +24,19 @@
 <%= f.url_field :website %>
 </p>
 <p>
-<%= f.label :system_type_id %>
+<%= f.label :system_type_id%>
 <%= f.collection_select :system_type_id, @system_types, :id, :name %>
 </p>
 <p>
-<%= f.label :battery_id %>
+<%= f.label :battery_id, "Battery brands you install: " %>
 <%= f.collection_check_boxes :battery_ids, @batteries, :id, :name %>
 </p>
 <p>
-<%= f.label :solar_id %>
+<%= f.label :solar_id, "Solar PV panel/inverter brands you install: " %>
 <%= f.collection_check_boxes :solar_ids, @solars, :id, :name %>
 </p>
 <p>
-<%= f.label :post_code_range_id %>
+<%= f.label :post_code_range_id, "Post codes you install at:" %>
 <%= f.collection_check_boxes :post_code_range_ids, @post_code_ranges, :id, :postcode_from_to %>
 </p>
 <p>

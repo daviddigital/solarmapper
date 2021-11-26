@@ -9,8 +9,6 @@ class Supplier < ApplicationRecord
     has_many :post_code_range_suppliers, dependent: :destroy
     has_many :post_code_ranges, through: :post_code_range_suppliers
 
-    #todo add more validation, dates, prices, can set error messages.
-
-    validates :display_name, :business_name, presence: true    
+    validates :display_name, :business_name, :display_email, :quote_email, presence: true    
 
 end
