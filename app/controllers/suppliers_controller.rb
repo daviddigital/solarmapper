@@ -53,7 +53,6 @@ class SuppliersController < ApplicationController
     redirect_to suppliers_path
   end
 
-  # Update to show validation
   def update
     @supplier.update(supplier_params)
     redirect_to @supplier
@@ -61,7 +60,6 @@ class SuppliersController < ApplicationController
 
   private
 
-  ## Todo add relations 
   def supplier_params
     params.require(:supplier).permit(:display_name, :business_name, :business_num, :accred_num, :phone, :display_email, :quote_email, :instant_price, 
     :short_description, :long_description, :short_description, :website, :address, :cover, :system_type_id, :price_solar, :price_battery, :solar_offer, :battery_offer, solar_ids: [], battery_ids: [], post_code_range_ids: [])

@@ -11,7 +11,6 @@ class PostCodeRange < ApplicationRecord
         if postcode >= postcode_from && postcode <= postcode_to
             hash[:zone] = zone
             hash[:rating] = rating
-            p hash
         end
     end
     # CALCULATION Example rebate: A 10kW system in postcode 4000 installed in 2021
