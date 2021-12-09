@@ -1,6 +1,6 @@
 # Solar Mapper 
 
-MVP: https://solarmapper.herokuapp.com/ (US based web server)
+Initial functionality deployed to: https://solarmapper.herokuapp.com/ (US based web server)
 
 A marketplace for connecting households interested in solar / battery systems with solar / battery installers. 
 
