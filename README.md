@@ -1,4 +1,4 @@
-# Solar Mapper 
+# Solar Mapper (in progress)
 
 Initial functionality deployed to: https://solarmapper.herokuapp.com/ (US based web server)
 
