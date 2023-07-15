@@ -1,6 +1,4 @@
-# Solar Mapper (in progress)
-
-Initial functionality deployed to: https://solarmapper.herokuapp.com/
+# Solar Mapper
 
 A marketplace for connecting households interested in solar / battery systems with solar / battery installers. 
 
